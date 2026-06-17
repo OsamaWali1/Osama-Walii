@@ -1,0 +1,595 @@
+<style>
+.product_grid .container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+.product_grid .heading {
+    font-family: Lustria;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 120%;
+}
+.product_grid .products_wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+.product_grid .product_item_inner {
+    position: relative;
+}
+.product_grid .main_product_img {
+    position: relative;
+    height: 440px;
+}
+.product_grid .main_product_img svg {
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+.product_grid .product_popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 999;
+    pointer-events: none;
+}
+.product_grid .product_popup.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+.product_grid .popup_product_content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    flex-direction: column;
+    max-width:350px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+.product_grid svg.close_btn {
+    margin-left: auto;
+    cursor: pointer;
+}
+.product_grid .popup_product_img {
+    width: 120px;
+    flex-shrink: 0;
+    height: 140px;
+}
+.product_grid .popup_product_info h3{
+    font-family: Jost;
+    font-weight: 300;
+    font-style: Light;
+    font-size: 16px;
+    margin: 0;
+    line-height: 120%;
+}
+.product_grid .product_price{
+    font-family: Lustria;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 120%;
+    margin: 0;
+}
+.product_grid .product_desc {
+    font-family: Jost;
+    font-weight: 300;
+    font-style: Light;
+    font-size: 14px;
+    margin: 0;
+    line-height: 120%;
+}
+.product_grid .popup_image_content {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.product_grid img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.product_grid .popup_product_info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.product_grid .product_price {
+    font-size: 24px;
+    font-weight: bold;
+}
+.product_grid .product_desc {
+    font-size: 14px;
+    color: #555;
+}
+.product_grid .color-buttons {
+  display: flex;
+}
+.product_grid label{
+    font-family: Jost;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    line-height: 130%;
+}
+.product_grid .color-btn {
+    cursor: pointer;
+    padding: 14px 16px;
+    border: 1px solid #000;
+    width: 50%;
+    transition: all .2s ease;
+    background: transparent;
+    text-align: left;
+    font-family: Jost;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: -2%;
+    position: relative;
+    text-transform: capitalize;
+}
+.product_grid .color-btn.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+.product_grid .custom-size-select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #000;
+  background: #fff;
+  appearance: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+.product_grid .add-to-cart-button{
+    width: 100%;
+    border-radius: unset;
+}
+.product_grid *:focus-visible {
+    outline: unset;
+    outline-offset: unset;
+}
+.product_grid .custom-select-wrapper {
+  position: relative;
+}
+.product_grid .custom-select-wrapper::after {
+  content: "";
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  width: 15px;
+  height: 9px;
+  pointer-events: none;
+  transform: translateY(-50%);
+  transition: transform .3s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='15' height='9' viewBox='0 0 15 9' fill='none'%3E%3Cpath d='M1.06067 1.06067L7.06067 7.06067L13.0607 1.06067' stroke='black' stroke-width='1.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.product_grid .custom-size-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-right: 45px;
+}
+.product_grid span.color_value{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+    transform: translateY(-50%);
+}
+.product_grid .custom-select-wrapper:focus-within::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+.product_grid .variant_with_button {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.product_grid .product-form__input.size-select {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.product_grid .product-form__input.size-select {
+    order: 2;
+}
+.product_grid .custom-color-quick-add{
+    order: 3;
+}
+@media (max-width: 991px) {
+    .product_grid .main_product_img {
+        position: relative;
+        height: 170px;
+    }
+    .product_grid .products_wrapper{
+        grid-template-columns: repeat(2, 1fr);
+        gap:6px;
+    }
+    .product_grid .main_product_img svg{
+        width: 18px;
+        height: 18px;
+    }
+}
+{% for block in section.blocks %}
+    .product_grid #product-{{ block.id }} .pupup_show_svg{
+        top: {{ block.settings.svg_position_top }}%;
+        left: {{ block.settings.svg_position_left }}%;
+    }
+    @media (max-width: 991px) {
+        .product_grid #product-{{ block.id }} .pupup_show_svg{
+            top: {{ block.settings.mobile_svg_position_top }}%;
+            left: {{ block.settings.mobile_svg_position_left }}%;
+        }
+    }
+{% endfor %}
+#section-{{ section.id }}{
+  background: {{section.settings.bg_color}};
+  padding-top:{{ section.settings.padding_top_desktop }}px;
+  padding-bottom:{{ section.settings.padding_bottom_desktop }}px;
+  margin-top:{{ section.settings.margin_top_desktop }}px;
+  margin-bottom:{{ section.settings.margin_bottom_desktop }}px;
+}
+</style>
+<section class="product_grid" id ="section-{{ section.id }}">
+    <div class="container">
+        {% if section.settings.heading != blank %}
+            <h2 class="heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+        <div class="products_wrapper">
+            {% for block in section.blocks %}
+                {% assign product = block.settings.product %}
+                    <div class="product_item_inner" id="product-{{ block.id }}">
+                        {% if product.featured_image != blank %}
+                            <div class="main_product_img">
+                                {{ product.featured_image | image_url: width:product.featured_image.width | image_tag: loading: 'lazy' }}
+                                <svg class="pupup_show_svg" style="cursor: pointer;" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                                    <circle cx="11" cy="11" r="11" fill="#F8F8F8" fill-opacity="0.9"/>
+                                    <path d="M11.3457 7.04175V15.5033" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                                    <path d="M7.11523 11.2725H15.5768" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="product_popup">
+                        <div class="popup_product_content">
+                            <svg class="close_btn" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
+                            <path d="M4.24219 4.24279L12.7275 12.7281" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                            <path d="M4.24219 12.7278L12.7275 4.24249" stroke="black" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="popup_image_content">
+                                {% if product.featured_image != blank %}
+                                    <div class="popup_product_img">
+                                        {{ product.featured_image | image_url: width:product.featured_image.width | image_tag: loading: 'lazy' }}
+                                    </div>
+                                {% endif %}
+                                <div class="popup_product_info">
+                                    <h3>{{ product.title }}</h3>
+                                    <p class="product_price">{{ product.price | money }}</p>
+                                    <p class="product_desc">{{ product.description | strip_html }}</p>
+                                </div>
+                            </div>
+                            <div class="variant_with_button">
+                                {% for option in product.options_with_values %}
+                                    {% if option.name == 'Color' %}
+                                        <div class="product-form__input">
+                                            <label>{{ option.name }}</label>
+                                            <div class="color-buttons">
+                                                {% for value in option.values %}
+                                                    <button type="button" class="color-btn" data-value="{{ value }}" data-product-id="{{ product.id }}" {% if forloop.first %}active{% endif %}>
+                                                        <span class="color_value" style="background-color: {{ value }}; height: 99%; width: 4px; display: block;"></span>
+                                                        {{ value }}
+                                                    </button>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    {% elsif option.name == 'Size' %}
+                                        <div class="product-form__input size-select">
+                                            <label for="Option-{{ product.id }}-{{ option.position }}">
+                                                {{ option.name }}
+                                            </label>
+                                            <div class="custom-select-wrapper">
+                                                <select
+                                                    id="Option-{{ product.id }}-{{ option.position }}"
+                                                    name="Size"
+                                                    class="custom-size-select"
+                                                >
+                                                    {% for value in option.values %}
+                                                        <option value="{{ value }}" {% if option.selected_value == value %}selected{% endif %}>
+                                                            {{ value }}
+                                                        </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                <select name="id" class="product-variant-select" style="display:none;">
+                                    {% for variant in product.variants %}
+                                        <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>
+                                            {{ variant.title }} - {{ variant.price | money }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                                {% assign variant = product.selected_or_first_available_variant %}
+                                {% assign product_form_id = 'CustomProductForm-' | append: product.id %}
+
+                                <quick-add-component
+                                    class="quick-add custom-color-quick-add"
+                                    ref="quickAdd"
+                                    data-product-title="{{ product.title }}"
+                                    data-quick-add-button="add"
+                                    data-product-options-count="{{ product.options.size }}"
+                                >
+                                    <product-form-component
+                                        data-product-id="{{ product.id }}"
+                                        on:submit="/handleSubmit"
+                                        class="quick-add__product-form-component"
+                                    >
+                                        <div class="visually-hidden" aria-live="assertive" role="status" aria-atomic="true" ref="liveRegion"></div>
+                                        {% form 'product', product, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' %}
+                                            <input type="hidden" name="id" ref="variantId" value="{{ variant.id }}" {% unless variant.available %}disabled{% endunless %}>
+                                            <input type="hidden" name="quantity" value="1">
+                                            {% render 'add-to-cart-button',
+                                                add_to_cart_text: 'Add to cart',
+                                                class: 'button quick-add__button quick-add__button--add add-to-cart-button',
+                                                can_add_to_cart: variant.available,
+                                                product: product
+                                            %}
+                                        {% endform %}
+                                    </product-form-component>
+                                </quick-add-component>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+</section>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll(".product_popup").forEach(popup => {
+
+    const variantSelect = popup.querySelector(".product-variant-select");
+    const hiddenInput = popup.querySelector('input[name="id"]');
+    const colorButtons = popup.querySelectorAll(".color-btn");
+    const sizeSelect = popup.querySelector('select[name="Size"]');
+
+    const variants = Array.from(variantSelect?.options || []).map(o => ({
+      id: o.value,
+      title: o.text
+    }));
+
+    const getMatch = () => {
+      const color = popup.querySelector(".color-btn.active")?.dataset.value;
+      const size = sizeSelect?.value;
+
+      return variants.find(v =>
+        (!color || v.title.includes(color)) &&
+        (!size || v.title.includes(size))
+      );
+    };
+
+    const update = () => {
+      const m = getMatch();
+      if (m) {
+        variantSelect.value = m.id;
+        if (hiddenInput) hiddenInput.value = m.id;
+      }
+    };
+
+    const reset = () => {
+      if (colorButtons.length) {
+        colorButtons.forEach(b => b.classList.remove("active"));
+        colorButtons[0].classList.add("active");
+      }
+
+      if (sizeSelect) sizeSelect.selectedIndex = 0;
+
+      update();
+    };
+
+    colorButtons.forEach(b =>
+      b.addEventListener("click", () => {
+        colorButtons.forEach(x => x.classList.remove("active"));
+        b.classList.add("active");
+        update();
+      })
+    );
+
+    sizeSelect?.addEventListener("change", update);
+
+    if (colorButtons.length && !popup.querySelector(".color-btn.active")) {
+      colorButtons[0].classList.add("active");
+    }
+
+    update();
+
+    popup.addEventListener("click", () => {
+      reset();
+      popup.classList.remove("active");
+    });
+
+    popup.querySelector(".popup_product_content")?.addEventListener("click", e => e.stopPropagation());
+
+    popup.querySelector(".close_btn")?.addEventListener("click", e => {
+      e.stopPropagation();
+      reset();
+      popup.classList.remove("active");
+    });
+
+    popup.__reset = reset;
+  });
+
+  document.querySelectorAll(".pupup_show_svg").forEach(btn =>
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+
+      const popup = btn.closest(".product_item_inner")?.nextElementSibling;
+
+      if (popup) {
+        popup.classList.add("active");
+
+        const colorButtons = popup.querySelectorAll(".color-btn");
+        const sizeSelect = popup.querySelector('select[name="Size"]');
+        const variantSelect = popup.querySelector(".product-variant-select");
+        const hiddenInput = popup.querySelector('input[name="id"]');
+
+        const variants = Array.from(variantSelect?.options || []).map(o => ({
+          id: o.value,
+          title: o.text
+        }));
+
+        const color = colorButtons[0]?.dataset.value;
+        const size = sizeSelect?.value;
+
+        const match = variants.find(v =>
+          (!color || v.title.includes(color)) &&
+          (!size || v.title.includes(size))
+        );
+
+        colorButtons.forEach(x => x.classList.remove("active"));
+        if (colorButtons.length) colorButtons[0].classList.add("active");
+
+        if (match) {
+          variantSelect.value = match.id;
+          if (hiddenInput) hiddenInput.value = match.id;
+        }
+      }
+    })
+  );
+
+});
+</script>
+{% schema %}
+{
+    "name": "Products Grid",
+    "settings": [
+        {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Background Color"
+        },
+        {
+            "type": "range",
+            "id": "padding_top_desktop",
+            "label": "Padding Top (Desktop)",
+            "min": 0,
+            "max": 200,
+            "step": 1,
+            "default": 80
+        },
+        {
+            "type": "range",
+            "id": "padding_bottom_desktop",
+            "label": "Padding Bottom (Desktop)",
+            "min": 0,
+            "max": 200,
+            "step": 1,
+            "default": 80
+        },
+        {
+            "type": "range",
+            "id": "margin_top_desktop",
+            "label": "Margin Top (Desktop)",
+            "min": -200,
+            "max": 200,
+            "step": 1,
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "margin_bottom_desktop",
+            "label": "Margin Bottom (Desktop)",
+            "min": -200,
+            "max": 200,
+            "step": 1,
+            "default": 0
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "product",
+            "limit":6,
+            "name": "Product",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                },
+                {
+                    "type": "header",
+                    "content": "Desktop SVG Position"
+                },
+                {
+                    "type": "range",
+                    "id": "svg_position_top",
+                    "label": "SVG Position Top (%)",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "default": 50
+                },
+                {
+                    "type": "range",
+                    "id": "svg_position_left",
+                    "label": "SVG Position Left (%)",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "default": 50
+                },
+                {
+                    "type": "header",
+                    "content": "Mobile SVG Position"
+                },
+                {
+                    "type": "range",
+                    "id": "mobile_svg_position_top",
+                    "label": "Mobile SVG Position Top (%)",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "default": 50
+                },
+                {
+                    "type": "range",
+                    "id": "mobile_svg_position_left",
+                    "label": "Mobile SVG Position Left (%)",
+                    "min": 0,
+                    "max": 100,
+                    "step": 1,
+                    "default": 50
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Products Grid"
+        }
+    ]
+}
+{% endschema %}
