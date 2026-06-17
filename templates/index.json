@@ -11,7 +11,76 @@
   "sections": {
     "products_grid_UQkmjc": {
       "type": "products-grid",
-      "disabled": true,
+      "blocks": {
+        "product_bcYFD9": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "svg_position_top": 50,
+            "svg_position_left": 50,
+            "mobile_svg_position_top": 50,
+            "mobile_svg_position_left": 50
+          }
+        },
+        "product_8rWVwJ": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "svg_position_top": 50,
+            "svg_position_left": 50,
+            "mobile_svg_position_top": 50,
+            "mobile_svg_position_left": 50
+          }
+        },
+        "product_p3kHxj": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "svg_position_top": 50,
+            "svg_position_left": 50,
+            "mobile_svg_position_top": 50,
+            "mobile_svg_position_left": 50
+          }
+        },
+        "product_fnKKKi": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "svg_position_top": 50,
+            "svg_position_left": 50,
+            "mobile_svg_position_top": 50,
+            "mobile_svg_position_left": 50
+          }
+        },
+        "product_bBFEhN": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "svg_position_top": 50,
+            "svg_position_left": 50,
+            "mobile_svg_position_top": 50,
+            "mobile_svg_position_left": 50
+          }
+        },
+        "product_HjWd4q": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "svg_position_top": 50,
+            "svg_position_left": 50,
+            "mobile_svg_position_top": 50,
+            "mobile_svg_position_left": 50
+          }
+        }
+      },
+      "block_order": [
+        "product_bcYFD9",
+        "product_8rWVwJ",
+        "product_p3kHxj",
+        "product_fnKKKi",
+        "product_bBFEhN",
+        "product_HjWd4q"
+      ],
       "name": "Products Grid",
       "settings": {
         "bg_color": "",
