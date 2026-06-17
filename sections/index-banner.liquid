@@ -1,0 +1,410 @@
+<style>
+.index_banner .media_content_inner{
+    height: 780px;
+    display: flex;
+    background-size: 100% 100% !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+.index_banner .bottom_text p,
+.index_banner .top_content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 50px;
+}
+.index_banner .bottom_text p{
+    justify-content: center;
+    font-family: Jost;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 110%;
+    letter-spacing: 0px;
+    text-align: center;
+}
+.index_banner .top_content{
+    background: #F5F5F5;
+}
+.index_banner .logo{
+    max-width: 151px;
+    width: 100%;
+}
+.index_banner .logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.index_banner .top_content h4{
+    font-family: Jost;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 120%;
+    letter-spacing: 0px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+}
+.index_banner  a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Jost;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 120%;
+    padding: 12px 34px;
+    position: relative;
+    z-index: 1;
+    max-width: max-content;
+    overflow: hidden;
+}
+.index_banner  a:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 0%;
+    height: 100%;
+    transition: width 0.4s ease;
+    z-index: -1;
+}
+.index_banner .top_content a.buttons{
+    background: #FFF544;
+}
+.index_banner .top_content a.buttons:before{
+    background: #000;
+}
+.index_banner  a:hover:before{
+    width: 100%;
+}
+.index_banner .top_content a.buttons:hover{
+    color: #fff;
+}
+.index_banner a{
+    gap: 20px;
+}
+.index_banner a svg{
+    width: 24px;
+}
+.index_banner .media_content a svg path,
+.index_banner .top_content a.buttons:hover svg path{
+    fill: #fff;
+}
+.index_banner .media_content a{
+    background: #000;
+    color: #fff;
+}
+.index_banner .media_content a:before{
+    background: #FFF544;
+}
+.index_banner  a:hover:before{
+    width: 100%;
+}
+.index_banner .media_content a:hover{
+    color: #000;
+}
+.index_banner .media_content a:hover svg path{
+    fill: #000;
+}
+.index_banner .media_content_inner .media_content{
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 50px 60px;
+    background: #fff;
+}
+.index_banner .media_content h2{
+    font-family: Jost;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 70px;
+    line-height: 100%;
+    margin: 0;
+}
+.index_banner .media_content .media_desc p{
+    font-family: Jost;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: 0px;
+}
+.index_banner .bottom_text {
+    background: #F5F5F5;
+    padding: 10px 0;
+    text-align: center;
+}
+@media (max-width: 767px){
+    .index_banner .top_content h4{
+        order: 3;
+        width: 100%;
+        text-align: center;
+    }
+    .index_banner .header__drawer{
+        display: block !important;
+        min-height: 40px;
+    }
+    .index_banner .top_content a.buttons,
+    .index_banner .top_content h4{
+        display: none;
+    }
+    .index_banner .top_content {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px 20px;
+        position: relative;
+    }
+    .index_banner .logo {
+        max-width: 125px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%); 
+    }
+    .index_banner a {
+        font-size: 14px;
+        padding: 10px 28px;
+    }
+    .index_banner .media_content_inner {
+        height: 380px;
+        margin-top: 166px;
+    }   
+    .index_banner .media_content h2 {
+        font-size: 30px;
+    }
+    .index_banner .media_content_inner .media_content{
+        padding: 20px;
+        gap: 20px;
+        height: 510px;
+        background: unset; 
+        align-items: center;
+        margin: -155px auto auto;
+        text-align: center;
+    }
+    .index_banner .media_content .media_desc p {
+        font-size: 16px;
+    }
+    .index_banner .bottom_text p{
+        font-size: 14px;
+    }
+    .index_banner .media_content a{
+        margin-top: auto;
+    }
+}
+#section-{{ section.id }} .media_content_inner{
+    background: url({{ section.settings.media | img_url: 'master' }});
+    align-items: {{ section.settings.media_content_position }};
+    justify-content: {{ section.settings.media_content_alignment }};
+}
+{% if section.settings.media_content_alignment == 'center' %}
+    #section-{{ section.id }} .media_content_inner{
+        text-align: center;
+    }
+    #section-{{ section.id }} .media_content a {
+        margin: 0 auto;
+    }
+{% endif %}
+{% if section.settings.media_content_alignment == 'flex-end' %}
+    #section-{{ section.id }} .media_content_inner{
+        text-align: end;
+    }
+    #section-{{ section.id }} .media_content a {
+        margin: 0 0 0 auto;
+    }
+{% endif %}
+@media (max-width: 767px){
+    #section-{{ section.id }} .media_content_inner {
+        background: url({{ section.settings.mobile_media | img_url: 'master' }});
+        align-items: {{ section.settings.mobile_media_content_position }};
+        justify-content: {{ section.settings.mobile_media_content_alignment }};
+        background-size: 100% 100% !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+    }
+}
+</style>
+<section class="index_banner" id="section-{{ section.id }}" >
+    <div class="top_content">
+        <div
+        style="display: none;"
+        class="header__drawer"
+        ref="headerDrawerContainer"
+        data-hydration-key="header-drawer-mobile"
+        {{ block.shopify_attributes }}
+        >
+        {% render 'header-drawer',
+            linklist: section.settings.menu,
+            data_header_drawer_type: 'mobile-drawer',
+            section: section
+        %}
+        </div>
+        {% if section.settings.logo_img != blank %}
+            <div class="logo">
+                {{ section.settings.logo_img| image_url: width: section.settings.logo_img.width | image_tag: loading: 'lazy' }}
+            </div>
+        {% endif %}
+        {% if section.settings.center_text != blank %}
+            <h4>{{ section.settings.center_text }}</h4>
+        {% endif %}
+        {% if section.settings.btn_text != blank %}
+            <a class="buttons" href="{{ section.settings.btn_url }}">{{ section.settings.btn_text }}
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="12" viewBox="0 0 26 12" fill="none">
+                <path d="M0.75 4.77298L7.37629e-08 4.77298L-7.37629e-08 6.27298L0.75 6.27298L0.75 4.77298ZM25.2803 6.05331C25.5732 5.76042 25.5732 5.28554 25.2803 4.99265L20.5074 0.21968C20.2145 -0.073213 19.7396 -0.0732131 19.4467 0.21968C19.1538 0.512574 19.1538 0.987447 19.4467 1.28034L23.6893 5.52298L19.4467 9.76562C19.1538 10.0585 19.1538 10.5334 19.4467 10.8263C19.7396 11.1192 20.2145 11.1192 20.5074 10.8263L25.2803 6.05331ZM0.75 6.27298L24.75 6.27298L24.75 4.77298L0.75 4.77298L0.75 6.27298Z" fill="black"/>
+                </svg>
+            </a>
+        {% endif %}
+    </div>
+        <div class="media_content_inner">
+            <div class="media_content">
+                {% if section.settings.media_headline != blank %}
+                    <h2>{{ section.settings.media_headline }}</h2>
+                {% endif %}
+                {% if section.settings.media_desc != blank %}
+                    <div class="media_desc">
+                        {{ section.settings.media_desc }}
+                    </div>
+                {% endif %}
+                {% if section.settings.media_btn_text != blank %}
+                    <a class="buttons" href="{{ section.settings.media_btn_url }}">{{ section.settings.media_btn_text }}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="12" viewBox="0 0 26 12" fill="none">
+                            <path d="M0.75 4.77298L7.37629e-08 4.77298L-7.37629e-08 6.27298L0.75 6.27298L0.75 4.77298ZM25.2803 6.05331C25.5732 5.76042 25.5732 5.28554 25.2803 4.99265L20.5074 0.21968C20.2145 -0.073213 19.7396 -0.0732131 19.4467 0.21968C19.1538 0.512574 19.1538 0.987447 19.4467 1.28034L23.6893 5.52298L19.4467 9.76562C19.1538 10.0585 19.1538 10.5334 19.4467 10.8263C19.7396 11.1192 20.2145 11.1192 20.5074 10.8263L25.2803 6.05331ZM0.75 6.27298L24.75 6.27298L24.75 4.77298L0.75 4.77298L0.75 6.27298Z" fill="black"/>
+                        </svg>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        {% if section.settings.bottom_text != blank %}
+            <div class="bottom_text">
+                {{ section.settings.bottom_text }}
+            </div>
+        {% endif %}
+</section>
+{% schema %}
+{
+    "name": "Index Banner",
+    "settings": [
+        {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Menu"
+        },
+        {
+            "type": "image_picker",
+            "id": "media",
+            "label": "Background image"
+        },
+        {
+            "type": "image_picker",
+            "id": "mobile_media",
+            "label": "Mobile Background image"
+        },
+        {
+            "type": "header",
+            "content": "Sticky content"
+        },
+        {
+            "type": "image_picker",
+            "id": "logo_img",
+            "label": "Logo image"
+        },
+        {
+            "type": "text",
+            "id": "center_text",
+            "label": "Center text"
+        },
+        {
+            "type": "url",
+            "id": "btn_url",
+            "label": "Button URL"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button text"
+        },
+        {
+            "type": "text",
+            "id": "media_headline",
+            "label": "Media headline"
+        },
+        {
+            "type": "richtext",
+            "id": "media_desc",
+            "label": "Media description"
+        },
+        {
+            "type": "header",
+            "content": "Desktop Content Alignment"
+        },
+        {
+            "type": "select",
+            "id": "media_content_position",
+            "label": "Media content position",
+            "options": [
+                {
+                    "value": "flex-start",
+                    "label": "Top"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "flex-end",
+                    "label": "Bottom"
+                }
+            ],
+            "default": "center"
+        },
+        {
+            "type": "select",
+            "id": "media_content_alignment",
+            "label": "Media content alignment",
+            "options": [
+                {
+                    "value": "flex-start",
+                    "label": "Left"
+                },
+                {
+                    "value": "center",
+                    "label": "Center"
+                },
+                {
+                    "value": "flex-end",
+                    "label": "Right"
+                }
+            ],
+            "default": "center"
+        },
+        { 
+            "type": "url",
+            "id": "media_btn_url",
+            "label": "Media button URL"
+        },
+        {
+            "type": "text",
+            "id": "media_btn_text",
+            "label": "Media button text"
+        },
+        {
+            "type": "header",
+            "content": "Bottom Text"
+        },
+        {
+            "type": "richtext",
+            "id": "bottom_text",
+            "label": "Bottom text"
+        }
+    ],
+    "presets": [
+        {
+            "name": "Index Banner",
+        }
+    ]
+}
+{% endschema %}
