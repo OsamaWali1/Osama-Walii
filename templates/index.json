@@ -36,8 +36,8 @@
           "type": "product",
           "settings": {
             "product": "black-leather-bag",
-            "svg_position_top": 50,
-            "svg_position_left": 50,
+            "svg_position_top": 56,
+            "svg_position_left": 56,
             "mobile_svg_position_top": 50,
             "mobile_svg_position_left": 50
           }
@@ -46,7 +46,7 @@
           "type": "product",
           "settings": {
             "product": "blue-silk-tuxedo",
-            "svg_position_top": 50,
+            "svg_position_top": 55,
             "svg_position_left": 50,
             "mobile_svg_position_top": 50,
             "mobile_svg_position_left": 50
