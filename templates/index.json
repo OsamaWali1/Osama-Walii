@@ -38,8 +38,8 @@
             "product": "black-leather-bag",
             "svg_position_top": 56,
             "svg_position_left": 56,
-            "mobile_svg_position_top": 50,
-            "mobile_svg_position_left": 50
+            "mobile_svg_position_top": 20,
+            "mobile_svg_position_left": 70
           }
         },
         "product_8rWVwJ": {
@@ -48,8 +48,8 @@
             "product": "blue-silk-tuxedo",
             "svg_position_top": 55,
             "svg_position_left": 83,
-            "mobile_svg_position_top": 50,
-            "mobile_svg_position_left": 50
+            "mobile_svg_position_top": 20,
+            "mobile_svg_position_left": 70
           }
         },
         "product_p3kHxj": {
@@ -58,8 +58,8 @@
             "product": "chequered-red-shirt",
             "svg_position_top": 23,
             "svg_position_left": 63,
-            "mobile_svg_position_top": 50,
-            "mobile_svg_position_left": 50
+            "mobile_svg_position_top": 20,
+            "mobile_svg_position_left": 70
           }
         },
         "product_fnKKKi": {
@@ -68,8 +68,8 @@
             "product": "classic-leather-jacket",
             "svg_position_top": 29,
             "svg_position_left": 68,
-            "mobile_svg_position_top": 50,
-            "mobile_svg_position_left": 50
+            "mobile_svg_position_top": 20,
+            "mobile_svg_position_left": 70
           }
         },
         "product_bBFEhN": {
@@ -78,8 +78,8 @@
             "product": "classic-varsity-top",
             "svg_position_top": 28,
             "svg_position_left": 48,
-            "mobile_svg_position_top": 50,
-            "mobile_svg_position_left": 50
+            "mobile_svg_position_top": 20,
+            "mobile_svg_position_left": 70
           }
         },
         "product_HjWd4q": {
@@ -88,8 +88,8 @@
             "product": "dark-denim-top",
             "svg_position_top": 40,
             "svg_position_left": 75,
-            "mobile_svg_position_top": 50,
-            "mobile_svg_position_left": 50
+            "mobile_svg_position_top": 20,
+            "mobile_svg_position_left": 70
           }
         }
       },
